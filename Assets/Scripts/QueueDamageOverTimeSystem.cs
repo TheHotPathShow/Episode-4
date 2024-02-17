@@ -1,5 +1,4 @@
-﻿using Unity.Collections;
-using Unity.Entities;
+﻿using Unity.Entities;
 using UnityEngine.InputSystem;
 
 namespace THPS.DamageSystem
@@ -20,7 +19,7 @@ namespace THPS.DamageSystem
             }
 
             var deltaTime = SystemAPI.Time.DeltaTime;
-            var ecb = new EntityCommandBuffer(Allocator.Temp);
+            var ecb = new EntityCommandBuffer(state.WorldUpdateAllocator);
             
             foreach (var (damageOverTime, entity) in SystemAPI.Query<RefRW<DamageOverTimeProperties>>().WithEntityAccess())
             {

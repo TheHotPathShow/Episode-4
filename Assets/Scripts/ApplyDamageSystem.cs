@@ -1,4 +1,4 @@
-﻿using Unity.Collections;
+﻿using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
@@ -7,9 +7,10 @@ namespace THPS.DamageSystem
 {
     public partial struct ApplyDamageSystem : ISystem
     {
+        [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
-            var ecb = new EntityCommandBuffer(Allocator.Temp);
+            var ecb = new EntityCommandBuffer(state.WorldUpdateAllocator);
             
             foreach (var (currentHitPoints, maxHitPoints, damageBuffer, entityTeam, damageReceivingEntity) in SystemAPI
                          .Query<RefRW<CurrentHitPoints>, MaxHitPoints, DynamicBuffer<DamageBufferElement>, EntityTeam>()
@@ -88,14 +89,14 @@ namespace THPS.DamageSystem
                     ecb.AddComponent<DestroyEntityTag>(damageReceivingEntity);
                 }
                 
-                if (state.EntityManager.HasComponent<HealthBarUI>(damageReceivingEntity))
+                if (SystemAPI.ManagedAPI.HasComponent<HealthBarUI>(damageReceivingEntity))
                 {
-                    state.EntityManager.SetComponentEnabled<UpdateHealthBarUI>(damageReceivingEntity, true);
+                    SystemAPI.SetComponentEnabled<UpdateHealthBarUI>(damageReceivingEntity, true);
                 }
 
                 if (totalHitPoints > 0) continue;
                 
-                if (state.EntityManager.HasComponent<DamageFlashTimer>(damageReceivingEntity))
+                if (SystemAPI.HasComponent<DamageFlashTimer>(damageReceivingEntity))
                 {
                     var timer = SystemAPI.GetComponent<DamageFlashTimer>(damageReceivingEntity);
                     timer.CurrentTime = timer.FlashTime;

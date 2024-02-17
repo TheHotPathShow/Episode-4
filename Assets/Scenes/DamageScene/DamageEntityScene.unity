@@ -778,6 +778,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 485725952970729452, guid: 3ee74e3bdad89a641bb6d091f9cb0630,
         type: 3}
+      propertyPath: Team
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 485725952970729452, guid: 3ee74e3bdad89a641bb6d091f9cb0630,
+        type: 3}
       propertyPath: MultiplyMagicDamage
       value: 1
       objectReference: {fileID: 0}
@@ -785,6 +790,11 @@ PrefabInstance:
         type: 3}
       propertyPath: MultiplyPhysicalDamage
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485725952970729452, guid: 3ee74e3bdad89a641bb6d091f9cb0630,
+        type: 3}
+      propertyPath: ShouldIgnoreDamageMultiplication
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3670304891479732581, guid: 3ee74e3bdad89a641bb6d091f9cb0630,
         type: 3}
@@ -954,7 +964,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 485725952970729452, guid: 3ee74e3bdad89a641bb6d091f9cb0630,
         type: 3}
+      propertyPath: MagicDamageMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485725952970729452, guid: 3ee74e3bdad89a641bb6d091f9cb0630,
+        type: 3}
       propertyPath: MultiplyPhysicalDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 485725952970729452, guid: 3ee74e3bdad89a641bb6d091f9cb0630,
+        type: 3}
+      propertyPath: PhysicalDamageMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 485725952970729452, guid: 3ee74e3bdad89a641bb6d091f9cb0630,
+        type: 3}
+      propertyPath: ShouldIgnoreDamageMultiplication
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3670304891479732581, guid: 3ee74e3bdad89a641bb6d091f9cb0630,

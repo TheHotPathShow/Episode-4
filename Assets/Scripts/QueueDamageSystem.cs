@@ -15,12 +15,14 @@ namespace THPS.DamageSystem
 
         public void OnUpdate(ref SystemState state)
         {
-            // var damageEntity = state.EntityManager.CreateEntity(typeof(DestroyEntityTag));
-            
             if (Keyboard.current[Key.Digit1].wasPressedThisFrame)
             {
-                var damageEntity = state.EntityManager.CreateEntity(typeof(DestroyEntityTag));
-                state.EntityManager.AddComponentData(damageEntity, new DamageProperties
+                var damageEntity = state.EntityManager.CreateEntity(stackalloc ComponentType[]
+                {
+                    ComponentType.ReadOnly<DestroyEntityTag>(),
+                    ComponentType.ReadOnly<DamageProperties>()
+                });
+                SystemAPI.SetComponent(damageEntity, new DamageProperties
                 {
                     DamageType = DamageType.Physical,
                     DamageTeam = TeamType.Red,
@@ -30,16 +32,24 @@ namespace THPS.DamageSystem
 
             if (Keyboard.current[Key.Digit2].wasPressedThisFrame)
             {
-                var damageEntity = state.EntityManager.CreateEntity(typeof(DestroyEntityTag));
-                state.EntityManager.AddComponentData(damageEntity, new DamageProperties
+                var damageEntity = state.EntityManager.CreateEntity(stackalloc ComponentType[]
+                {
+                    ComponentType.ReadOnly<DestroyEntityTag>(),
+                    ComponentType.ReadOnly<DamageProperties>()
+                });
+                SystemAPI.SetComponent(damageEntity, new DamageProperties
                 {
                     DamageType = DamageType.Physical,
                     DamageTeam = TeamType.Red,
                     HitPoints = 10
                 });
                 
-                var damageEntity2 = state.EntityManager.CreateEntity(typeof(DestroyEntityTag));
-                state.EntityManager.AddComponentData(damageEntity2, new DamageProperties
+                var damageEntity2 = state.EntityManager.CreateEntity(stackalloc ComponentType[]
+                {
+                    ComponentType.ReadOnly<DestroyEntityTag>(),
+                    ComponentType.ReadOnly<DamageProperties>()
+                });
+                SystemAPI.SetComponent(damageEntity2, new DamageProperties
                 {
                     DamageType = DamageType.Physical,
                     DamageTeam = TeamType.Red,
@@ -49,8 +59,12 @@ namespace THPS.DamageSystem
             
             if (Keyboard.current[Key.Digit3].wasPressedThisFrame)
             {
-                var damageEntity = state.EntityManager.CreateEntity(typeof(DestroyEntityTag));
-                state.EntityManager.AddComponentData(damageEntity, new DamageProperties
+                var damageEntity = state.EntityManager.CreateEntity(stackalloc ComponentType[]
+                {
+                    ComponentType.ReadOnly<DestroyEntityTag>(),
+                    ComponentType.ReadOnly<DamageProperties>()
+                });
+                SystemAPI.SetComponent(damageEntity, new DamageProperties
                 {
                     DamageType = DamageType.Magic,
                     DamageTeam = TeamType.Red,
@@ -60,24 +74,36 @@ namespace THPS.DamageSystem
             
             if (Keyboard.current[Key.R].wasPressedThisFrame)
             {
-                var healingEntityRed = state.EntityManager.CreateEntity(typeof(DestroyEntityTag));
-                state.EntityManager.AddComponentData(healingEntityRed, new DamageProperties
+                var healingEntityRed = state.EntityManager.CreateEntity(stackalloc ComponentType[]
+                {
+                    ComponentType.ReadOnly<DestroyEntityTag>(),
+                    ComponentType.ReadOnly<DamageProperties>()
+                });
+                SystemAPI.SetComponent(healingEntityRed, new DamageProperties
                 {
                     DamageType = DamageType.Healing,
                     DamageTeam = TeamType.Red,
                     HitPoints = 100
                 });
                 
-                var healingEntityBlue = state.EntityManager.CreateEntity(typeof(DestroyEntityTag));
-                state.EntityManager.AddComponentData(healingEntityBlue, new DamageProperties
+                var healingEntityBlue = state.EntityManager.CreateEntity(stackalloc ComponentType[]
+                {
+                    ComponentType.ReadOnly<DestroyEntityTag>(),
+                    ComponentType.ReadOnly<DamageProperties>()
+                });
+                SystemAPI.SetComponent(healingEntityBlue, new DamageProperties
                 {
                     DamageType = DamageType.Healing,
                     DamageTeam = TeamType.Blue,
                     HitPoints = 100
                 });
                 
-                var healingEntityGreen = state.EntityManager.CreateEntity(typeof(DestroyEntityTag));
-                state.EntityManager.AddComponentData(healingEntityGreen, new DamageProperties
+                var healingEntityGreen = state.EntityManager.CreateEntity(stackalloc ComponentType[]
+                {
+                    ComponentType.ReadOnly<DestroyEntityTag>(),
+                    ComponentType.ReadOnly<DamageProperties>()
+                });
+                SystemAPI.SetComponent(healingEntityGreen, new DamageProperties
                 {
                     DamageType = DamageType.Healing,
                     DamageTeam = TeamType.Green,
